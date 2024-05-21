@@ -13,7 +13,7 @@ void main() {
         ),
         body: const Center(
           child: Image(
-            image: AssetImage('assetName'),
+            image: AssetImage('images/coder.jpg'),
           ),
         ),
       ),
