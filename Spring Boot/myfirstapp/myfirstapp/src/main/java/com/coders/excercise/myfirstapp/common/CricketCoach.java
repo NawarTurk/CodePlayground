@@ -1,4 +1,4 @@
-package com.coders.excercise.myfirstapp.constructorInjection;
+package com.coders.excercise.myfirstapp.common;
 
 import org.springframework.stereotype.Component;
 
@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class CricketCoach implements Coach{
     @Override
     public String getCoachMsg() {
-        return "Practice!";
+        return "Practice!!!";
     }
 }
