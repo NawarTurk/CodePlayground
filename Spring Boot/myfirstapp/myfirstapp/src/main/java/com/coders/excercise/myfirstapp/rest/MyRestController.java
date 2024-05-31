@@ -2,6 +2,7 @@ package com.coders.excercise.myfirstapp.rest;
 
 import com.coders.excercise.myfirstapp.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,15 +20,16 @@ public class MyRestController {
     private Coach myCoach;  // Define a proper field for the dependency
 
 
-    @Autowired
-    public void setCoach(Coach theCoach) {
-        myCoach = theCoach;
-    }
-//    // define a constructor for dep. injection
-//    @Autowired  // tells Spring to inject a dependency here
-//    public MyRestController(Coach theCoach) {
-//        this.myCoach = theCoach;
+//    @Autowired
+//    public void setCoach(Coach theCoach) {
+//        myCoach = theCoach;
 //    }
+
+    // define a constructor for dep. injection
+    @Autowired  // tells Spring to inject a dependency here
+    public MyRestController(@Qualifier("baseballCoach") Coach theCoach) {
+        this.myCoach = theCoach;
+    }
 
     // expose "/" endpoint that returns "Hello World!"
     @GetMapping("/")
