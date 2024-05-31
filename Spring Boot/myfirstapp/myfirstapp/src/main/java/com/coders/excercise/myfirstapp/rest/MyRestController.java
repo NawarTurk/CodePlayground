@@ -18,13 +18,16 @@ public class MyRestController {
     private String teamName;
 
     private Coach myCoach;  // Define a proper field for the dependency
-
+    private Coach anotherCoach;
 
     // define a constructor for dep. injection
     @Autowired  // tells Spring to inject a dependency here
-    public MyRestController(@Qualifier("baseballCoach") Coach theCoach) {
+    public MyRestController(
+            @Qualifier("baseballCoach") Coach theCoach,
+            @Qualifier("baseballCoach") Coach theAnotherCoach) {
         System.out.println("In constructor: " + getClass().getSimpleName());
         this.myCoach = theCoach;
+        this.anotherCoach = theAnotherCoach;
     }
 
 //    // Utilizing the primary annotation
@@ -66,5 +69,10 @@ public class MyRestController {
     @GetMapping("/coachmsg")
     public String getCoachMsg() {
         return myCoach.getCoachMsg();
+    }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Comparing beans: myCoach == anotherCoach, " + (myCoach == anotherCoach);
     }
 }
