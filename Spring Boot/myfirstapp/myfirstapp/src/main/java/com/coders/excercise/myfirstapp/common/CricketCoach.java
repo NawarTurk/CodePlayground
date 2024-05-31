@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component  // this marks the class as a Spring bean and make it available for dep. injection
-@Lazy
+//@Lazy
 public class CricketCoach implements Coach{
 
     public CricketCoach() {
