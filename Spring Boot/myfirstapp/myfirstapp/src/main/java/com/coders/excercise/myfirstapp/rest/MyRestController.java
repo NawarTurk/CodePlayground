@@ -19,11 +19,18 @@ public class MyRestController {
 
     private Coach myCoach;  // Define a proper field for the dependency
 
-    // Utilizing the primary annotation
-    @Autowired
-    public MyRestController(Coach theCoach) {
+
+    // define a constructor for dep. injection
+    @Autowired  // tells Spring to inject a dependency here
+    public MyRestController(@Qualifier("baseballCoach") Coach theCoach) {
         this.myCoach = theCoach;
     }
+
+//    // Utilizing the primary annotation
+//    @Autowired
+//    public MyRestController(Coach theCoach) {
+//        this.myCoach = theCoach;
+//    }
 
     // define a setter for dependency injection
 //    @Autowired
@@ -31,11 +38,7 @@ public class MyRestController {
 //        myCoach = theCoach;
 //    }
 
-//    // define a constructor for dep. injection
-//    @Autowired  // tells Spring to inject a dependency here
-//    public MyRestController(@Qualifier("baseballCoach") Coach theCoach) {
-//        this.myCoach = theCoach;
-//    }
+
 
     // expose "/" endpoint that returns "Hello World!"
     @GetMapping("/")
