@@ -23,6 +23,7 @@ public class MyRestController {
     // define a constructor for dep. injection
     @Autowired  // tells Spring to inject a dependency here
     public MyRestController(@Qualifier("baseballCoach") Coach theCoach) {
+        System.out.println("In constructor: " + getClass().getSimpleName());
         this.myCoach = theCoach;
     }
 
@@ -37,7 +38,6 @@ public class MyRestController {
 //    public void setCoach(Coach theCoach) {
 //        myCoach = theCoach;
 //    }
-
 
 
     // expose "/" endpoint that returns "Hello World!"
