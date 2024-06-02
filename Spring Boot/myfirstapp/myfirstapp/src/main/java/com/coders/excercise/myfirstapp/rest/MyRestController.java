@@ -18,13 +18,14 @@ public class MyRestController {
     private String teamName;
 
     private Coach myCoach;  // Define a proper field for the dependency
-    private Coach anotherCoach;
+//    private Coach anotherCoach;
 
     // define a constructor for dep. injection
     @Autowired  // tells Spring to inject a dependency here
     public MyRestController(
-            @Qualifier("baseballCoach") Coach theCoach,
-            @Qualifier("baseballCoach") Coach theAnotherCoach) {
+            @Qualifier("baseballCoach") Coach theCoach {
+//            @Qualifier("baseballCoach") Coach theCoach,
+//            @Qualifier("baseballCoach") Coach theAnotherCoach) {
         System.out.println("In constructor: " + getClass().getSimpleName());
         this.myCoach = theCoach;
         this.anotherCoach = theAnotherCoach;
