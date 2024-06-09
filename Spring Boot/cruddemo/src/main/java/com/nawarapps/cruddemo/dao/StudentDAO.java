@@ -9,4 +9,5 @@ public interface StudentDAO {
     void save(Student theStudent);
     Student findById(int studentId);
     List<Student> findAllStudents();
+    List<Student> findByLastName(String lastName);
 }
