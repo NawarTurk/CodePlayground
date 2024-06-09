@@ -19,7 +19,7 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {  // inject studentDAO
 		return runner -> {
-//			createStudent(studentDAO);
+			createStudent(studentDAO);
 //			readStudent(studentDAO);
 //			findAllStudents(studentDAO);
 //			queryForStudentByLastName(studentDAO);
@@ -127,6 +127,6 @@ public class CruddemoApplication {
 		System.out.println("Saving the student ...");
 		studentDAO.save(tempStudent);
 
-		System.out.println("Saved student. " + tempStudent.getId());
+		System.out.println("Saved student with Id: . " + tempStudent.getId());
 	}
 }
