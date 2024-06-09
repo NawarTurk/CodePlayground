@@ -5,4 +5,5 @@ import com.nawarapps.cruddemo.entity.Student;
 public interface StudentDAO {
 
     void save(Student theStudent);
+    Student findById(int studentId);
 }
