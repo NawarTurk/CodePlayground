@@ -4,6 +4,7 @@ import MovieCard from "./MovieCard";
 
 export default function MovieGrid() {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // setMovies(m)  // Note: Invoking setMovies here like this
   //  would lead to too many re-renders, causing an infinite loop
@@ -14,11 +15,27 @@ export default function MovieGrid() {
       .then((data) => setMovies(data)); // // Update the 'movies' state with an array of movie objects
   }, []);
 
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+  );
+
   return (
-    <div className="movies-grid">
-      {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
+    <div>
+      <input
+        type="text"
+        placeholder="Search movies..."
+        value={searchTerm}
+        onChange={handleSearchTermChange}
+      />
+      <div className="movies-grid">
+        {filteredMovies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 }
