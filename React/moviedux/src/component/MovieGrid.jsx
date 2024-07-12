@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles.css";
 import MovieCard from "./MovieCard";
 
-export default function MovieGrid() {
-  const [movies, setMovies] = useState([]);
+export default function MovieGrid({ movies }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All Ratings");
@@ -11,11 +10,6 @@ export default function MovieGrid() {
   // setMovies(m)  // Note: Invoking setMovies here like this
   //  would lead to too many re-renders, causing an infinite loop
 
-  useEffect(() => {
-    fetch("movies.json") // Fetch the movie data from a local JSON file
-      .then((response) => response.json()) // Parse the JSON-formatted response into a JavaScript object
-      .then((data) => setMovies(data)); // // Update the 'movies' state with an array of movie objects
-  }, []);
 
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
