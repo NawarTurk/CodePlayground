@@ -5,6 +5,8 @@ import MovieCard from "./MovieCard";
 export default function MovieGrid() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [genre, setGenre] = useState("All Genres");
+  const [rating, setRating] = useState("All Ratings");
 
   // setMovies(m)  // Note: Invoking setMovies here like this
   //  would lead to too many re-renders, causing an infinite loop
@@ -19,18 +21,59 @@ export default function MovieGrid() {
     setSearchTerm(e.target.value);
   };
 
-  const filteredMovies = movies.filter((movie) =>
+  const handleGenreChange = (e) => {
+    setGenre(e.target.value);
+  };
+
+  const handleRatingChange = (e) => {
+    setRating(e.target.value);
+  };
+
+  let filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLocaleLowerCase())
   );
+
+  if (!genre.includes("All Genres"))
+    filteredMovies = filteredMovies.filter((movie) =>
+      movie.genre.toLocaleLowerCase().includes(genre.toLocaleLowerCase())
+    );
 
   return (
     <div>
       <input
+        className="search-input"
         type="text"
         placeholder="Search movies..."
         value={searchTerm}
         onChange={handleSearchTermChange}
       />
+
+      <div className="filter-bar">
+        <div className="filter-slot">
+          <label>Genre</label>
+          <select
+            className="filter-dropdown"
+            value={genre}
+            onChange={handleGenreChange}
+          >
+            <option>All Genres</option>
+            <option>Action</option>
+            <option>Drama</option>
+            <option>Fantasy</option>
+            <option>Horror</option>
+          </select>
+        </div>
+        <div className="filter-slot">
+          <label>Rating</label>
+          <select className="filter-dropdown" value={rating}>
+            <option>All Ratings</option>
+            <option>Good</option>
+            <option>Ok</option>
+            <option>Bad</option>
+          </select>
+        </div>
+      </div>
+
       <div className="movies-grid">
         {filteredMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
