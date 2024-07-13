@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import "../styles.css";
 import MovieCard from "./MovieCard";
 
-export default function MovieGrid({ movies }) {
+export default function MovieGrid({ movies, watchlist, toggleWatchlist }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All Ratings");
-
-  // setMovies(m)  // Note: Invoking setMovies here like this
-  //  would lead to too many re-renders, causing an infinite loop
-
 
   const handleSearchTermChange = (e) => {
     setSearchTerm(e.target.value);
@@ -97,7 +93,12 @@ export default function MovieGrid({ movies }) {
 
       <div className="movies-grid">
         {filteredMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            isWatchlisted={watchlist.includes(movie.id)}
+            toggleWatchlist={toggleWatchlist}
+          />
         ))}
       </div>
     </div>
