@@ -7,4 +7,8 @@ const getInvoices = () => api.get("/posts");
 
 const deleteInvoice = (id) => api.delete(`/posts/${id}`);
 
-export { getInvoices, deleteInvoice };
+const createInvoice = (invoice) => api.post("/posts", invoice);
+
+const updateInvoice = (id, invoice) => api.put(`/posts/${id}`, invoice);
+
+export { getInvoices, deleteInvoice, createInvoice, updateInvoice };

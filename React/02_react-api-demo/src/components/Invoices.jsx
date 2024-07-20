@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { getInvoices, deleteInvoice } from "../services/invoiceService";
+import {
+  getInvoices,
+  deleteInvoice,
+  updateInvoice,
+} from "../services/invoiceService";
+import InvoiceForm from "./InvoiceForm";
 
 export default function Invoice() {
   const [invoices, setInvoices] = useState([]);
+  const [editingInvoice, setEditingInvoice] = useState(null);
+
+  const editInvoice = (invoice) => setEditingInvoice(invoice);
 
   useEffect(() => {
     // Calling the getInvoices function which sends an HTTP request to the API
@@ -31,11 +39,18 @@ export default function Invoice() {
   return (
     <div>
       <h1>Invoices</h1>
+      <InvoiceForm
+        invoices={invoices}
+        setInvoices={setInvoices}
+        editingInvoice={editingInvoice}
+        setEditingInvoice={setEditingInvoice}
+      />
       <ul>
         {invoices.map((invoice) => (
           <li key={invoice.id}>
             <h2>{invoice.title}</h2>
             <p>{invoice.body}</p>
+            <button onClick={() => editInvoice(invoice)}>Edit</button>
             <button onClick={() => handleDelete(invoice.id)}>Delete</button>
           </li>
         ))}
