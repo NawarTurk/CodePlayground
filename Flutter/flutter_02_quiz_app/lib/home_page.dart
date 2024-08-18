@@ -5,26 +5,35 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.blue, Colors.lightBlue],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/images/quiz-logo.png',
-              width: 250,
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            'assets/images/quiz-logo.png',
+            width: 250,
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          const Text(
+            'Learn Flutter!',
+            style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 27,
             ),
-            const Text('Hello, Nawar!'),
-            const TextButton(onPressed: null, child: Text('Press Me!')),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          TextButton(
+            onPressed: () {},
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            child: const Text('Press Me!'),
+          ),
+        ],
       ),
     );
   }

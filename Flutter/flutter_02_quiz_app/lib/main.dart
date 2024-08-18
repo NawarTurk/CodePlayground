@@ -5,9 +5,17 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        body: HomePage(),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.green, Colors.blue],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: HomePage(),
+        ),
       ),
     ),
   );
 }
-
