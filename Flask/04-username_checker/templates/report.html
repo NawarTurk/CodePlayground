@@ -1,0 +1,26 @@
+{% extends "base.html "%}
+{% block content%}
+<div class="jumbotron">
+    <h1>Your Report:</h1>
+    <p>your username is {{username}} has a security number of {{counter}}/3.</p>
+    {% if conditions_met|length > 0%}
+    <p>It has the following requirements:</p>
+    <ul>
+        {% for item in conditions_met %}
+        <li>{{item}}</li>
+        {% endfor%}
+    </ul>
+    {% endif %}
+
+    {% if conditions_missed|length > 0%}
+    <p>It is  missing the following requirements:</p>
+    <ul>
+        {% for item in conditions_missed%}
+        <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</div>
+
+{% endblock %}
