@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Optional: jQuery, if you are using Bootstrap components that rely on this JavaScript library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Popper.js for tooltips, popovers -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Thank You</title>
+</head>
+<body> 
+    <!-- When you call flash, Flask automatically send back get_flashed_messages -->
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ msg }}</strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <h1>Thank you. Here is the info you provided</h1>
+    <ul>
+        <li>Breed:{{ session['breed'] }}</li>
+        <li>Nrutered: {{ session['neutered'] }}</li>
+        <li>Mood: {{ session['mood'] }}</li>
+        <li>Feedback: {{ session['feedback'] }}</li>
+    </ul>
+</body>
+</html>
