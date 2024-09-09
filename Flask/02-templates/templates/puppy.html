@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>This is the pupy page for {{name|capitalize}}</h1>
+<a href="{{url_for('static', filename='puppy.jpg')}}">here</a>
+<!-- The url_for function is used here to generate the URL for a static file, such as an image. 
+By specifying 'static' as the first argument and the filename as the second, Flask ensures that the correct path to the static resource 
+(e.g., 'puppy.jpg') is generated, even if the static folder is moved or renamed. -->
+{% endblock %}

@@ -1,0 +1,28 @@
+SQL Varieties:
+SQL databases are available in several flavors, including PostgreSQL, MySQL, and SQLite.
+SQLite Capacity:
+SQLite is capable of handling up to around 100,000 hits per day, making it ideal for applications with moderate traffic.
+Connecting Python Flask to SQL:
+ORM (Object Relational Mapper): Using an ORM allows developers to perform CRUD (Create, Read, Update, Delete) operations using Python syntax rather than direct SQL commands.
+Common ORM:
+SQLAlchemy: This is a widely-used ORM that streamlines the process of performing database operations.
+Flask Extension for SQLAlchemy:
+Flask-SQLAlchemy: This extension makes it easier to integrate SQLAlchemy into a Flask application.
+Installation:
+To enable Flask to connect to an SQL database using SQLAlchemy, install the necessary extension:
+
+
+pip install Flask-SQLAlchemy
+
+Steps to Integrate SQLAlchemy with Flask:
+Set Up the SQLite Database in a Flask Application: 1.1. Initialize the Flask application. 1.2. Configure the application to use SQLAlchemy. 1.3. Instantiate the SQLAlchemy class with the application object.
+
+Create a Model in the Flask Application:
+
+Models represent tables in the database. Instead of creating tables directly, define model classes that SQLAlchemy will use to generate the tables.
+Inherit from db.Model.
+Define table columns as class attributes.
+Implement methods for initialization and representation.
+Perform Basic CRUD Operations on the Model:
+
+Add, read, update, and delete records using the model through Python code rather than SQL statements.

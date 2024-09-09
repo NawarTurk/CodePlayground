@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <P>
+        {% if breed %}
+        The breed you entered is <b>{{breed}}</b> <br/>
+        Please update it in the form below:
+        {% else %}
+        Please enter your breed:
+        {% endif %}
+    </P>
+
+    <form method="POST">  <!-- we are posting information -->
+        {{ form.hidden_tag() }}          <!-- available becasue we inheredted FlaskForm -->
+        {{ form.breed.label }}<br/>{{ form.breed() }}
+        {{ form.submit() }}
+    </form>
+</body>
+</html>
