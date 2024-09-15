@@ -60,7 +60,7 @@ class Puppy(db.Model):
 
 # Generate a migration script automatically.
 # This should be done whenever you make changes to your database models (e.g., adding a new table or field).
-# flask db migrate -m "created puppy table"
+# flask db migrate -m "initial migration"
 
 # Apply the migration to the database.
 # This command updates the database schema to match the current state of your models as described in the migration scripts.
